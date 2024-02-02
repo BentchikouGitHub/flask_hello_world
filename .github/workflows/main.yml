@@ -9,7 +9,7 @@ jobs:
         with:
           host: ${{ secrets.HOST_DNS }}
           username: ${{ secrets.USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD}}
+          password: ${{ secrets.PASSWORD}}
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             cd $HOME/www/
