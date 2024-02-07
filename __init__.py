@@ -61,7 +61,7 @@ def Readfiche(post_id):
 
 
 
-@app.route('/fiche_client2/<int:post_DU>')
+@app.route('/fiche_client2/<TEXT:post_DU>')
 def Readfiche(post_id):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
