@@ -61,11 +61,11 @@ def Readfiche(post_id):
 
 
 
-@app.route('/fiche_client2/<int:post_id>')
+@app.route('/fiche_client2/<int:post_DU>')
 def Readfiche(post_id):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
-    cursor.execute('SELECT * FROM clients WHERE id = ?', (post_id,))
+    cursor.execute('SELECT * FROM clients WHERE nom  like 'DU%', (post_DU,))
     data = cursor.fetchall()
     conn.close()
     
