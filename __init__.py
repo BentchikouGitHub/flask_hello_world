@@ -65,7 +65,7 @@ def Readfiche(post_id):
 
 
 @app.route('/fiche_client_recherche/<string:nom>')
-def Readfiche(post_id):
+def Search(post_id):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     param="%" + nom +"%"
