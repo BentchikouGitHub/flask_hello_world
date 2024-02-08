@@ -76,63 +76,6 @@ def Search(nom):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-@app.route('/formulaire/')
-def validate():
-    # récupération des données du formulaire
-    nom = entryNom.get()
-    prenom   =  entryPrenom.get() 
-    adresse     =  entryAdresse.get() 
-    conn = sqlite3.connect('database.db')
-    cur = conn.cursor()
-    req1 = "CREATE TABLE IF NOT EXISTS clients(id INTEGER PRIMARY KEY AUTOINCREMENT, nom TEXT NOT NULL\
-,prenom TEXT NOT NULL , adresse TEXT NOT NULL)"
-    cur.execute(req1)    
-    req2 = "INSERT INTO clients (nom , prenom, adresse) values (?, ?, ?)"
-    cur.execute(req2 , (nom, prenom, adresse))
-    conn.commit()
-    conn.close()
-    
-root = Tk()
-root.geometry("600x400")
- 
-#==============================
-# create a form to insert data
-#==============================
-# Label & Entry for nom
-lblNom = Label(root , text = "Nom : ")
-lblNom.place(x = 10 , y = 10)
-entryNom = Entry(root )
-entryNom.place(x = 100 , y = 10 , width = 200)
- 
-# Label & Entry Prenom
-lblPrenom = Label(root , text = "Prenom")
-lblPrenom.place( x = 10 , y = 40 ) 
-entryPrenom = Entry(root)
-entryPrenom.place( x = 100 , y = 40 , width = 200)
- 
-# Label & Entry Adresse
-lblAdresse = Label(root , text = "Adresse")
-lblAdresse.place( x = 10 , y = 70 ) 
-entryAdresse = Entry(root)
-entryAdresse.place( x = 100 , y = 70 , width = 200)
- 
-# Button Action
-btnValidate = Button(root , text = "INSERTION" , command = validate)
-btnValidate.place(x = 100 , y = 100, width = 200 , height = 25)
-root.mainloop()
-#==============
-# Display data
-#==============
-conn = sqlite3.connect('database.db')
-cur = conn.cursor()
-result = cur.execute("select * from clients")
-for row in result:
-    print("ID : ", row[0])
-    print("Nom : ", row[1])
-    print("Prenom : ", row[2])
-    print("Adresse : ", row[3])
-    print("--------------------------")
-
 
 
 
