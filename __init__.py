@@ -3,9 +3,10 @@ from flask import render_template
 from flask import json
 from urllib.request import urlopen
 import sqlite3
-from tkinter import*
-from tkinter import ttk
+
+
 from tkinter import messagebox
+import tkinter as tk
 
 
 
@@ -86,6 +87,54 @@ def Search(nom):
 
 
 
+@app.route('/formulaire/')
+def validate():
+    # récupération des données du formulaire
+    nom = entryNom.get()
+    prenom   =  entryPrenom.get() 
+    adresse     =  entryAdresse.get() 
+    conn = sqlite3.connect('database.db')
+    cur = conn.cursor()
+    req1 = "CREATE TABLE IF NOT EXISTS clients(id INTEGER PRIMARY KEY AUTOINCREMENT, nom TEXT NOT NULL\
+,prenom TEXT NOT NULL , adresse TEXT NOT NULL)"
+    cur.execute(req1)    
+    req2 = "INSERT INTO clients (nom , prenom, adresse) values (?, ?, ?)"
+    cur.execute(req2 , (nom, prenom, adresse))
+    conn.commit()
+    conn.close()
+
+    
+
+app = tk.Tk()
+app.title("Formulaire d'insertion")
+    
+
+ 
+#==============================
+# create a form to insert data
+#==============================
+# Label & Entry for nom
+lblNom = tk.Label(root , text = "Nom : ")
+lblNom.place(x = 10 , y = 10)
+entryNom = tk.Entry(root )
+entryNom.place(x = 100 , y = 10 , width = 200)
+ 
+# Label & Entry Prenom
+lblPrenom = tk.Label(root , text = "Prenom")
+lblPrenom.place( x = 10 , y = 40 ) 
+entryPrenom = tk.Entry(root)
+entryPrenom.place( x = 100 , y = 40 , width = 200)
+ 
+# Label & Entry Adresse
+lblAdresse = tk.Label(root , text = "Adresse")
+lblAdresse.place( x = 10 , y = 70 ) 
+entryAdresse = tk.Entry(root)
+entryAdresse.place( x = 100 , y = 70 , width = 200)
+ 
+# Button Action
+btnValidate = tk.Button(root , text = "INSERTION" , command = validate)
+btnValidate.place(x = 100 , y = 100, width = 200 , height = 25)
+root.mainloop()
 
 
 
