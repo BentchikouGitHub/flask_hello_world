@@ -78,11 +78,6 @@ def Search(nom):
     return render_template('read_data.html', data=data)
 
 
-@app.route('/formulaire/')
-
-
-
-
 
 
 
