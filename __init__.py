@@ -64,12 +64,12 @@ def Readfiche(post_id):
     return render_template('read_data.html', data=data)
 
 
-@app.route('/fiche_client_recherche/<String:nom>')
+@app.route('/fiche_client_recherche/<string:nom>')
 def Readfiche(post_id):
     conn = sqlite3.connect('database.db')
     cursor = conn.cursor()
     param="%" + nom +"%"
-    cursor.execute('SELECT * FROM clients WHERE nom  LIKE ?' , (param))
+    cursor.execute('SELECT * FROM clients WHERE nom  LIKE ?' , (param,))
     data = cursor.fetchall()
     conn.close()
     
