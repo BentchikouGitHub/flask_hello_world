@@ -3,7 +3,7 @@ from flask import render_template
 from flask import json
 from urllib.request import urlopen
 import sqlite3
-from tkinter as tk
+from tkinter import*
 from tkinter import messagebox
 
 
