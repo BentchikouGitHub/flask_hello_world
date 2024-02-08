@@ -103,9 +103,7 @@ def validate():
     conn.commit()
     conn.close()
 
-    messagebox.showinfo("Succès", "Élément inséré avec succès dans la base de données.")
-    except Exception as e:
-        messagebox.showerror("Erreur", f"Erreur lors de l'insertion dans la base de données : {str(e)}")
+    
 
 
     
