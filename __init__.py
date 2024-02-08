@@ -105,8 +105,8 @@ def validate():
 
     
 
-app = tk.Tk()
-app.title("Formulaire d'insertion")
+root = tk.Tk()
+root.title("Formulaire d'insertion")
     
 
  
