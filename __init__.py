@@ -92,6 +92,11 @@ def validate():
     cur.execute(req2 , (nom, prenom, adresse))
     conn.commit()
     conn.close()
+     
+    # Rendre le template HTML et transmettre les données
+    return render_template('read_data.html', data=data)
+
+
     
 root = Tk()
 root.geometry("600x400")
