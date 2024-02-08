@@ -4,6 +4,7 @@ from flask import json
 from urllib.request import urlopen
 import sqlite3
 from tkinter import*
+from tkinter import messagebox
 
 
 
@@ -92,9 +93,10 @@ def validate():
     cur.execute(req2 , (nom, prenom, adresse))
     conn.commit()
     conn.close()
-     
-    # Rendre le template HTML et transmettre les données
-    return render_template('read_data.html', data=data)
+
+    messagebox.showinfo("Succès", "Élément inséré avec succès dans la base de données.")
+    except Exception as e:
+        messagebox.showerror("Erreur", f"Erreur lors de l'insertion dans la base de données : {str(e)}")
 
 
     
@@ -126,25 +128,6 @@ entryAdresse.place( x = 100 , y = 70 , width = 200)
 btnValidate = Button(root , text = "INSERTION" , command = validate)
 btnValidate.place(x = 100 , y = 100, width = 200 , height = 25)
 root.mainloop()
-#==============
-# Display data
-#==============
-conn = sqlite3.connect('database.db')
-cur = conn.cursor()
-result = cur.execute("select * from clients")
-for row in result:
-    print("ID : ", row[0])
-    print("Nom : ", row[1])
-    print("Prenom : ", row[2])
-    print("Adresse : ", row[3])
-    print("--------------------------")
-
-
-
-
-
-
-
 
 
 
