@@ -103,10 +103,6 @@ def validate():
     conn.commit()
     conn.close()
 
-    
-
-
-    
 root = Tk()
 root.geometry("600x400")
  
