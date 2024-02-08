@@ -63,7 +63,17 @@ def Readfiche(post_id):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-
+@app.route('/fiche_client2/<string:post_DU>')
+def Readfiche(post_id):
+    conn = sqlite3.connect('database.db')
+    cursor = conn.cursor()
+    param="%" + post_DU +"%"
+    cursor.execute('SELECT * FROM clients WHERE nom  LIKE ?' , (param))
+    data = cursor.fetchall()
+    conn.close()
+    
+    # Rendre le template HTML et transmettre les données
+    return render_template('read_data.html', data=data)
 
 
 
