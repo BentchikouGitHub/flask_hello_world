@@ -76,7 +76,7 @@ def Search(nom):
     # Rendre le template HTML et transmettre les données
     return render_template('read_data.html', data=data)
 
-
+@app.route('/formulaire/')
 def validate():
     # récupération des données du formulaire
     nom = entryNom.get()
